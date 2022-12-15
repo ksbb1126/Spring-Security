@@ -16,6 +16,8 @@
           <element id="library" level="project" name="Spring-5.2.3.RELEASE" />
           <element id="library" level="project" name="Spring MVC-5.2.3.RELEASE" />
           <element id="library" level="project" name="Maven: com.mysql:mysql-connector-j:8.0.31" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-taglibs:5.5.0" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-acl:5.5.0" />
         </element>
       </element>
     </root>
