@@ -18,6 +18,13 @@
     <sec:authorize access="isAnonymous()">
       <h4><a href="security/login">LOGIN</a> 로그인 해주세요.</h4>
     </sec:authorize>
+    <sec:authorize access="isAuthenticated()">
+      <form action="/logout" method="POST">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        <button type="submit">LOGOUT</button>
+      </form>
+    </sec:authorize>
+
   </div>
   <br><br>
   <div>
