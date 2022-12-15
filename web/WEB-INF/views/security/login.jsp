@@ -47,7 +47,7 @@
 
     <div class="form-floating">
       <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="username">
-      <label for="floatingInput">User</label>
+      <label for="floatingInput">Id</label>
     </div>
     <div class="form-floating">
       <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">

@@ -2,6 +2,7 @@
 <beans:beans xmlns="http://www.springframework.org/schema/security"
              xmlns:beans="http://www.springframework.org/schema/beans"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:security="http://www.springframework.org/schema/security"
              xsi:schemaLocation="http://www.springframework.org/schema/beans
              http://www.springframework.org/schema/beans/spring-beans.xsd
              http://www.springframework.org/schema/security
@@ -30,13 +31,23 @@
             />
     </http>
 
-    <authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="user" password="{noop}user" authorities="ROLE_USER"/>
-                <user name="member" password="{noop}member" authorities="ROLE_MEMBER"/>
-                <user name="admin" password="{noop}admin" authorities="ROLE_ADMIN"/>
-            </user-service>
-        </authentication-provider>
-    </authentication-manager>
+    <!-- 암호화를 위한 passwordEncoder -->
+    <beans:bean id="passwordEncoder"
+                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+    </beans:bean>
+
+    <!-- DB연동 -->
+    <security:authentication-manager alias="authenticationManager">
+        <security:authentication-provider>
+            <security:jdbc-user-service data-source-ref="dataSource" />
+            <security:password-encoder ref="passwordEncoder" />
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <beans:property name="url" value="jdbc:mysql://localhost:3306/db01" />
+        <beans:property name="username" value="root" />
+        <beans:property name="password" value="1234" />
+    </beans:bean>
 </beans:beans>
