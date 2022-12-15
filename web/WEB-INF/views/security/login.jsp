@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Title</title>
@@ -27,6 +28,10 @@
       .bd-placeholder-img-lg {
         font-size: 3.5rem;
       }
+    }
+
+    .error {
+      color: red;
     }
   </style>
 
@@ -57,7 +62,13 @@
     <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
   </form>
+  <div>
+    <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+      <p class="error">Your login attempt was not successful due to <br/>
+          ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}</p>
+      <c:remove var="SPRING_SECURITY_LAST_EXCEPTION" scope="session"/>
+    </c:if>
+  </div>
 </main>
-
 </body>
 </html>

@@ -19,6 +19,15 @@
         <intercept-url pattern="/user/**" access="hasAnyRole('ROLE_USER','ROLE_MEMBER','ROLE_ADMIN')"/>
         <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
         <intercept-url pattern="/**" access="permitAll"/>
+
+        <access-denied-handler
+            error-page="/access_denied_page"
+        />
+
+        <logout
+            logout-url="/logout"
+            logout-success-url="/"
+            />
     </http>
 
     <authentication-manager>

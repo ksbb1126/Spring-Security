@@ -10,6 +10,11 @@ public class PageController {
         return "/security/login";
     }
 
+    @RequestMapping(value="/access_denied_page")
+    public String accessDeniedPage() throws Exception {
+        return "/access_denied_page";
+    }
+
     @RequestMapping(value="/page")
     public String page() throws Exception {
         return "/page";
