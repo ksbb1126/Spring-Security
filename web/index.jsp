@@ -16,7 +16,7 @@
   <div>
     <h1>Spring Security</h1><br>
     <sec:authorize access="isAnonymous()">
-      <h4><a href="login">LOGIN</a> 로그인 해주세요.</h4>
+      <h4><a href="security/login">LOGIN</a> 로그인 해주세요.</h4>
     </sec:authorize>
   </div>
   <br><br>
